@@ -33,7 +33,7 @@ fn test_kalman_filter_tracking() {
     let process_noise = na::Matrix2::new(1e-5, 0.0, 0.0, 1e-5);
     let measurement_noise = na::Matrix1::new(1.0);
 
-    let mut kf = KalmanFilter::new(
+    let mut kf = sdkf::KalmanFilter::new(
         &initial_state,
         &initial_covariance,
         &transition_matrix,
@@ -85,17 +85,17 @@ z_k &= H x_k + v_k
 
 Where $F$ is state transition matrix and $H$ is observation matrix. $w_k$ is process noise with covariance $R$, $v_k$ is observation noise with covariance $Q$.
 
-**Time update (predict)**
+#### Time update (predict)
 
 Project the state ahead:
 
-$$ \hat{x}_{k+1}^- = F \hat{x}_{k} $$
+$$ \hat{x}_{k+1}^- = F \hat{x}_k $$
 
 Project the state error covariance ahead:
 
 $$ P_{k+1}^- = F P_k F^T + Q $$
 
-**Measurement update (correct)**
+#### Measurement update (correct)
 
 Compute prediction error covariance:
 
