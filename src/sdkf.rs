@@ -49,7 +49,7 @@ impl<T: na::RealField, const STATE_DIM: usize, const MEASURE_DIM: usize>
         }
     }
 
-    // update kalman with new observation, return the prediction error
+    // update state with new observation, return the prediction error
     // NOTE: we assume that F, H, R, Q are constant, which is not true in some scenarios
     pub fn update(
         &mut self,
@@ -59,7 +59,7 @@ impl<T: na::RealField, const STATE_DIM: usize, const MEASURE_DIM: usize>
         self.pred_x = &self.f_mat * &self.x;
         self.pred_p_mat = &self.f_mat * &self.p_mat * self.f_mat.transpose() + &self.q_mat;
 
-        // update with innotvation
+        // update with innovation
         self.pred_err_cov = &self.h_mat * &self.pred_p_mat * &self.h_mat.transpose() + &self.r_mat;
         let result = match self.pred_err_cov.clone().try_inverse() {
             None => Err(format!("can not inverse {:?}", self.pred_err_cov)),
