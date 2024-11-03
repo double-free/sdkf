@@ -1,10 +1,6 @@
 use nalgebra as na;
 
-pub struct KalmanFilter<
-    T: na::Scalar + na::RealField,
-    const STATE_DIM: usize,
-    const MEASURE_DIM: usize,
-> {
+pub struct KalmanFilter<T: na::RealField, const STATE_DIM: usize, const MEASURE_DIM: usize> {
     // predicted state
     x: na::SVector<T, STATE_DIM>,
     pred_x: na::SVector<T, STATE_DIM>,
@@ -26,7 +22,7 @@ pub struct KalmanFilter<
     r_mat: na::SMatrix<T, MEASURE_DIM, MEASURE_DIM>,
 }
 
-impl<T: na::Scalar + na::RealField, const STATE_DIM: usize, const MEASURE_DIM: usize>
+impl<T: na::RealField, const STATE_DIM: usize, const MEASURE_DIM: usize>
     KalmanFilter<T, STATE_DIM, MEASURE_DIM>
 {
     pub fn new(

@@ -85,7 +85,7 @@ z_k &= H x_k + v_k
 
 Where $F$ is state transition matrix and $H$ is observation matrix. $w_k$ is process noise with covariance $R$, $v_k$ is observation noise with covariance $Q$.
 
-#### Time update (predict)
+#### Time Update (Predict)
 
 Project the state ahead:
 
@@ -95,7 +95,7 @@ Project the state error covariance ahead:
 
 $$ P_{k+1}^- = F P_k F^T + Q $$
 
-#### Measurement update (correct)
+#### Measurement Update (Correct)
 
 Compute prediction error covariance:
 
