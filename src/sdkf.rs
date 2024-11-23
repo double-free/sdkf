@@ -16,9 +16,9 @@ pub struct KalmanFilter<T: na::RealField, const STATE_DIM: usize, const MEASURE_
     f_mat: na::SMatrix<T, STATE_DIM, STATE_DIM>,
     // observation matrix
     h_mat: na::SMatrix<T, MEASURE_DIM, STATE_DIM>,
-    // Process noise
+    // process noise
     q_mat: na::SMatrix<T, STATE_DIM, STATE_DIM>,
-    // Measurement noise
+    // measurement noise
     r_mat: na::SMatrix<T, MEASURE_DIM, MEASURE_DIM>,
 }
 
@@ -69,7 +69,7 @@ impl<T: na::RealField, const STATE_DIM: usize, const MEASURE_DIM: usize>
                 self.x = &self.pred_x + &kalman_gain * &pred_err;
                 let eye = na::SMatrix::identity();
                 self.p_mat = (eye - &kalman_gain * &self.h_mat) * &self.pred_p_mat;
-                return Ok(pred_err);
+                Ok(pred_err)
             }
         };
         return result;

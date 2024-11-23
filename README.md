@@ -4,7 +4,7 @@ Static Dimension Kalman Filter implemented in Rust. The only dependency is [nalg
 
 ## Purpose
 
-There are more than enough Kalman Filter implementations. So why would reinvent wheel?
+There are more than enough Kalman Filter implementations. So why would I reinvent the wheel?
 
 - **It is simple and stupid**. Though many ones have tried, there is no "plug-and-play" Kalman Filter implementation. The real world use case is more complex and you always need to modify the original implementation before use. So why bother creating a "versatile" repository while in fact it is not? This repository is a merely template implementation for the simplest case, modify it based on your own use case.
 
