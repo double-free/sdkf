@@ -1,4 +1,4 @@
-pub mod mpc;
+pub mod mpo;
 pub mod sdkf;
 
 // run below tests with: cargo test -- --nocapture
