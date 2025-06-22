@@ -83,6 +83,10 @@ impl MpoSolver {
         for step in 0..t {
             for asset in 0..self.config.num_assets {
                 q[step * self.variable_cnt + asset] = -predicted_returns[asset][step];
+                if self.config.transaction_cost > 0.0 {
+                    q[step * self.variable_cnt + self.config.num_assets + asset] =
+                        self.config.transaction_cost;
+                }
             }
         }
 
